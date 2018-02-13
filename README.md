@@ -1,0 +1,1 @@
+This is a sample Kotlin Spring Boot app that serves a single endpoint.
