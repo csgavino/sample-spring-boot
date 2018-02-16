@@ -1,5 +1,8 @@
-package com.example.demo
+package com.example.demo.customers
 
+import com.example.demo.customers.Customer
+import com.example.demo.customers.CustomerController
+import com.example.demo.customers.CustomerService
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
