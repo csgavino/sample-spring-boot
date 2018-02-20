@@ -4,6 +4,5 @@ interface CustomerRepository {
 
     fun findAll(): List<Customer>
 
-    fun save(customer: Customer)
-
+    fun create(customer: Customer)
 }

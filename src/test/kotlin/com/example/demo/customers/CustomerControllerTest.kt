@@ -1,15 +1,12 @@
 package com.example.demo.customers
 
-import com.example.demo.customers.Customer
-import com.example.demo.customers.CustomerController
-import com.example.demo.customers.CustomerService
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.runners.MockitoJUnitRunner
+import org.mockito.junit.MockitoJUnitRunner
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -37,18 +34,15 @@ class CustomerControllerTest {
     @Test
     fun test_get_returnsCustomers() {
         val customers = listOf(
-                Customer("Larry"),
-                Customer("Curly"),
-                Customer("Moe")
+                Customer(firstName = "John", lastName = "Smith")
         )
         Mockito.`when`(customerService.getCustomers())
                 .thenReturn(customers)
 
         mockMvc.perform(get("/customers"))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$.customers[0].name").value("Larry"))
-                .andExpect(jsonPath("$.customers[1].name").value("Curly"))
-                .andExpect(jsonPath("$.customers[2].name").value("Moe"))
+                .andExpect(jsonPath("$.customers[0].firstName").value("John"))
+                .andExpect(jsonPath("$.customers[0].lastName").value("Smith"))
     }
 
 }

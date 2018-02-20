@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 class DemoApplication {
-    @Bean
-    fun init(repository: CustomerRepository) = CommandLineRunner {
-        repository.save(Customer("foo"))
-        repository.save(Customer("bar"))
-    }
+//    @Bean
+//    fun init(repository: CustomerRepository) = CommandLineRunner {
+//        repository.create(Customer("foo"))
+//        repository.create(Customer("bar"))
+//    }
 }
 
 fun main(args: Array<String>) {

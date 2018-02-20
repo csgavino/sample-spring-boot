@@ -38,6 +38,8 @@ repositories {
     mavenCentral()
 }
 
+ext['mockito.version'] = '2.15.0'
+
 dependencies {
     compile('org.flywaydb:flyway-core')
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -46,7 +48,6 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
-    runtime('com.h2database:h2')
     runtime('org.postgresql:postgresql')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

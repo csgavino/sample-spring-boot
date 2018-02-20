@@ -1,11 +1,12 @@
 package com.example.demo.customers
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.verify
-import org.mockito.runners.MockitoJUnitRunner
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class DefaultCustomerServiceTest {
@@ -22,8 +23,16 @@ class DefaultCustomerServiceTest {
 
     @Test
     fun test_getCustomers_returnsCustomers() {
-        subject.getCustomers()
+        val customers = listOf(
+                Customer(firstName = "John", lastName = "Smith"))
+        Mockito.`when`(repository.findAll())
+                .thenReturn(customers)
 
-        verify(repository).findAll()
+
+        val actualCustomers = subject.getCustomers()
+
+
+        assertThat(actualCustomers[0].firstName).isEqualTo("John")
+        assertThat(actualCustomers[0].lastName).isEqualTo("Smith")
     }
 }

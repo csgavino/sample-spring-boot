@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class CustomerController(val customerService: CustomerService) {
 
     @GetMapping
-    fun customers(): CustomerResponse {
-        val customers = customerService.getCustomers()
-
-        return CustomerResponse(customers)
+    fun customers(): SerializedCustomer {
+        return SerializedCustomer(customerService.getCustomers())
     }
 }

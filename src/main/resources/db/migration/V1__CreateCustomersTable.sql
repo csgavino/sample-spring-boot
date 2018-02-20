@@ -1,4 +1,5 @@
 CREATE TABLE customers (
-  id   BIGINT PRIMARY KEY,
-  name VARCHAR
+  id        SERIAL PRIMARY KEY,
+  firstName VARCHAR,
+  lastName  VARCHAR
 );
