@@ -1,26 +1,25 @@
 package com.example.demo.customers
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.postgresql.ds.PGSimpleDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert
 import java.util.*
 
-fun buildDataSource(): PGSimpleDataSource {
-    val dataSource = PGSimpleDataSource()
-    dataSource.url = System.getenv("SAMPLE_DATABASE_URL")
-    dataSource.user = System.getenv("SAMPLE_DATABASE_USER")
-    dataSource.password = System.getenv("SAMPLE_DATABASE_PASSWORD")
+fun buildDataSource(): MysqlDataSource {
+    val dataSource = MysqlDataSource()
+    dataSource.setUrl(System.getenv("TEST_DATABASE_URL"))
+    dataSource.setUser(System.getenv("TEST_DATABASE_USER"))
+    dataSource.setPassword(System.getenv("TEST_DATABASE_PASSWORD"))
 
     return dataSource
 }
 
 fun createCustomer(
         jdbcTemplate: JdbcTemplate,
-        id: Int,
         firstName: String,
         lastName: String) {
 
@@ -61,7 +60,6 @@ class JdbcCustomerDataMapperTest {
     fun test_findAll_returnsAllCustomers() {
         createCustomer(
                 jdbcTemplate,
-                1,
                 "John",
                 "Smith")
 

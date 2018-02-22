@@ -1,5 +1,5 @@
 CREATE TABLE customers (
-  id        SERIAL PRIMARY KEY,
-  firstName VARCHAR,
-  lastName  VARCHAR
+  id        INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  firstName VARCHAR(255),
+  lastName  VARCHAR(255)
 );

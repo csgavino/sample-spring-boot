@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.flywaydb.flyway" version "5.0.7"
+}
+
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
@@ -48,6 +52,6 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
-    runtime('org.postgresql:postgresql')
+    runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
