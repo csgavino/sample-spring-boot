@@ -11,8 +11,8 @@ import java.util.*
 
 fun buildDataSource(): MysqlDataSource {
     val dataSource = MysqlDataSource()
-    dataSource.setUrl(System.getenv("TEST_DATABASE_URL"))
-    dataSource.setUser(System.getenv("TEST_DATABASE_USER"))
+    dataSource.setUrl("jdbc:mysql://localhost:3306/sample_kotlin_app")
+    dataSource.setUser("root")
 
     return dataSource
 }
