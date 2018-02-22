@@ -13,7 +13,6 @@ fun buildDataSource(): MysqlDataSource {
     val dataSource = MysqlDataSource()
     dataSource.setUrl(System.getenv("TEST_DATABASE_URL"))
     dataSource.setUser(System.getenv("TEST_DATABASE_USER"))
-    dataSource.setPassword(System.getenv("TEST_DATABASE_PASSWORD"))
 
     return dataSource
 }
