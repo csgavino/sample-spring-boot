@@ -3,13 +3,13 @@ package com.example.demo
 import com.example.demo.messages.MessageReceiverRepository
 import com.example.demo.messages.MessageReceiverService
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.listener.PatternTopic
 import org.springframework.data.redis.listener.RedisMessageListenerContainer
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter
-import org.springframework.stereotype.Component
 
-@Component
+@Configuration
 class RedisConfiguration {
 
     @Bean
