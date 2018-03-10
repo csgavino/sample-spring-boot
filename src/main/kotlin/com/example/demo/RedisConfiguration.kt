@@ -1,6 +1,7 @@
 package com.example.demo
 
-import com.example.demo.messages.CustomerMessageReceiver
+import com.example.demo.messages.MessageReceiverRepository
+import com.example.demo.messages.MessageReceiverService
 import org.springframework.context.annotation.Bean
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.listener.PatternTopic
@@ -25,16 +26,16 @@ class RedisConfiguration {
     }
 
     @Bean
-    fun customerMessageReceiver(): CustomerMessageReceiver {
-        return CustomerMessageReceiver();
+    fun customerMessageReceiver(messageReceiverRepository: MessageReceiverRepository): MessageReceiverService {
+        return MessageReceiverService(messageReceiverRepository);
     }
 
     @Bean
     fun customerMessageListenerAdapter(
-            customerMessageReceiver: CustomerMessageReceiver): MessageListenerAdapter {
+            messageReceiverService: MessageReceiverService): MessageListenerAdapter {
         return MessageListenerAdapter(
-                customerMessageReceiver,
-                "receiveMessage")
+                messageReceiverService,
+                "messageReceived")
     }
 
 //    @Bean
